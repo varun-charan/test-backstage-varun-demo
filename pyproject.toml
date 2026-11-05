@@ -1,0 +1,56 @@
+[project]
+name = "test-backstage-varun-demo"
+version = "0.0.1"
+description = "test-backstage-varun-demo"
+requires-python = ">=3.13"
+readme = "README.md"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.8.0",
+    "mypy>=1.8.0",
+    "pre-commit>=3.6.0",
+]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 120
+select = [
+    "E",    # pycodestyle errors
+    "F",    # Pyflakes
+    "W",    # pycodestyle warnings
+    "I",    # isort
+    "N",    # pep8-naming
+    "UP",   # pyupgrade
+    "S",    # flake8-bandit
+    "B",    # flake8-bugbear
+    "A",    # flake8-builtins
+    "C4",   # flake8-comprehensions
+    "DTZ",  # flake8-datetimez
+    "T20",  # flake8-print
+    "RET",  # flake8-return
+    "SIM",  # flake8-simplify
+    "ARG",  # flake8-unused-arguments
+    "ERA",  # eradicate
+    "PL",   # pylint
+]
+ignore = [
+    "S101",  # Use of assert detected
+    "S311",  # Random for cryptographic use
+    "PLR0913",  # Too many arguments
+]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=src --cov-report=term-missing"
+
+[tool.mypy]
+python_version = "3.13"
+strict = true
+warn_return_any = true
+warn_unused_configs = true

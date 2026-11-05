@@ -1,0 +1,15 @@
+# Following labels are added based on branch name
+feature: &major_release_branches
+  - '^(Feature:|feature:|Feat:|feat:)'
+enhancement: &minor_release_branches
+  - '^(Enhancement:|enhancement:|Enh:|enh:)'
+bug:
+  - '^(Bug:|bug:|Hotfix:|hotfix:|Fix:|fix:)'
+chore:
+  - '^(Chore:|chore:)'
+
+# Following labels are used for automatic version bumping
+major: *major_release_branches
+minor: *minor_release_branches
+patch:
+  - '((B|b)ug|(H|h)otfix|(F|f)ix|(C|c)hore):'

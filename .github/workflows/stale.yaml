@@ -1,0 +1,25 @@
+name: Close Stale PRs
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs daily at midnight
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close Stale PRs
+        uses: actions/stale@v6
+        with:
+          repo-token: 
+          stale-pr-message: 'This pull request has been automatically marked as stale because it has not had recent activity for 30 days. It will be closed if no further activity occurs.'
+          days-before-stale: 30
+          days-before-close: 7
+          stale-pr-label: 'stale'
+          exempt-pr-labels: 'keep-open'
+          operations-per-run: 30
